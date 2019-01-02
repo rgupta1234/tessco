@@ -1,0 +1,22 @@
+{
+  "log_configuration": {
+    "log_path":"/opt/vmi_upload/logs/dev/",
+    "log_level":"INFO"
+  },
+  "service_provider_configuration": {
+    "wsdl_path": "/opt/vmi_upload/resources/vmi_production.wsdl",
+    "vendor_id": "(removed)",
+    "user_name": "",
+    "password": "(removed)",
+    "timeout": 100000,
+    "slack_webhook": "(removed)"
+  },
+  "database_configuration": {
+    "host": "(removed)",
+    "username": "(removed)",
+    "password": "(removed)",
+    "db_name": "(removed)",
+    "schema": "(removed)",
+    "port": 5432
+  }
+}

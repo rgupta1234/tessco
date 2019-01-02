@@ -1,0 +1,2232 @@
+<wsdl:definitions targetNamespace="http://www.iqmetrix.com" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.iqmetrix.com" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+   <wsdl:types>
+      <s:schema elementFormDefault="qualified" targetNamespace="http://www.iqmetrix.com">
+         <s:import namespace="http://microsoft.com/wsdl/types/"/>
+         <s:element name="GetUpdatedInventoryList">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="VendorIdentity">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="VendorID" type="s1:guid"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Client" type="tns:ClientAgent"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ClientAgent">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="ClientID" type="s1:guid"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="StoreID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorAccountNumber" type="s:string"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="GetUpdatedInventoryListResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetUpdatedInventoryListResult" type="tns:ArrayOfProductInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfProductInformation">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="ProductInformation" nillable="true" type="tns:ProductInformation"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ProductInformation">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="ProductID" type="s1:guid"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ProductSKU" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorSKU" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ProductItemID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="CategoryPath" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="MaximumLevel" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="MinimumLevel" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ProductCost" type="s:decimal"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityInStock" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityOnOrder" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityOnUncommittedOrder" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityOnBackOrder" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityInTransfer" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityTransferIn" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityTransferOut" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityOnRMA" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityOnLoan" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityCommittedOnOrderEntry" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantitySuggestedByVendor" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantitySold" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="GrossQuantitySold" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="GrossQuantityReturned" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityOrdered" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityReceived" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="DateReceived" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ProductReceived" type="s:boolean"/>
+               <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:boolean"/>
+               <s:element minOccurs="1" maxOccurs="1" name="MinMaxLocked" type="s:boolean"/>
+               <s:element minOccurs="1" maxOccurs="1" name="DoNotOrder" type="s:boolean"/>
+               <s:element minOccurs="1" maxOccurs="1" name="DateEOL" nillable="true" type="s:dateTime"/>
+               <s:element minOccurs="1" maxOccurs="1" name="RetailPrice" type="s:decimal"/>
+               <s:element minOccurs="1" maxOccurs="1" name="SalePrice" nillable="true" type="s:decimal"/>
+               <s:element minOccurs="1" maxOccurs="1" name="SaleBegin" nillable="true" type="s:dateTime"/>
+               <s:element minOccurs="1" maxOccurs="1" name="SaleEnd" nillable="true" type="s:dateTime"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="GetStoreList">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetStoreListResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetStoreListResult" type="tns:ArrayOfStoreInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfStoreInformation">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="StoreInformation" nillable="true" type="tns:StoreInformation"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="StoreInformation">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="StoreID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Region" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="District" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ProvinceState" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="PostalZipCode" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ShipToStoreID" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="BillToStoreID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorAccountNumber" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Abbreviation" type="s:string"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="GetStoreInformation">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetStoreInformationResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetStoreInformationResult" type="tns:StoreInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetPurchaseOrderList">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetPurchaseOrderListResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetPurchaseOrderListResult" type="tns:ArrayOfPurchaseOrderInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfPurchaseOrderInformation">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="PurchaseOrderInformation" nillable="true" type="tns:PurchaseOrderInformation"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="PurchaseOrderInformation">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="PurchaseOrderID" type="s1:guid"/>
+               <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrderData" type="tns:PurchaseOrderData"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ProductsOrdered" type="tns:ArrayOfProductInformation"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ProductsReceived" type="tns:ArrayOfProductInformation"/>
+               <s:element minOccurs="0" maxOccurs="1" name="SerialsReceived" type="tns:ArrayOfProductSerialNumber"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="PurchaseOrderData">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="PurchaseOrderID" type="s1:guid"/>
+               <s:element minOccurs="1" maxOccurs="1" name="RetailiQPurchaseOrderID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="RetailiQPurchaseOrderNumber" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ShipToStoreID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ShipToVendorAccountNumber" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="BillToStoreID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="BillToVendorAccountNumber" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="OrderTotal" type="s:decimal"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ShippingTotal" type="s:decimal"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorInvoiceNumber" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="EstimatedArrivalDate" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ShipToStoreName" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="BillToStoreName" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorName" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="CreatedByVMI" type="s:boolean"/>
+               <s:element minOccurs="0" maxOccurs="1" name="CreatedDate" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ArrayOfProductSerialNumber">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="ProductSerialNumber" nillable="true" type="tns:ProductSerialNumber"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ProductSerialNumber">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="ProductItemID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="NonSellable" type="s:boolean"/>
+               <s:element minOccurs="1" maxOccurs="1" name="DateReceived" type="s:dateTime"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="GetClientPurchaseOrdersByStatus">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="isCommitted" type="s:boolean"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="isCompleted" type="s:boolean"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="startDate" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="endDate" type="s:string"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetClientPurchaseOrdersByStatusResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetClientPurchaseOrdersByStatusResult" type="tns:ArrayOfPurchaseOrderInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetHierarchyInfo">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetHierarchyInfoResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetHierarchyInfoResult" type="tns:HierarchyInfo"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="HierarchyInfo">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="1" name="Channels" type="tns:ArrayOfChannel"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ArrayOfChannel">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="Channel" nillable="true" type="tns:Channel"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="Channel">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="ChannelID" type="s1:guid"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ChannelName" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="StoreCount" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Regions" type="tns:ArrayOfRegion"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ArrayOfRegion">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="Region" nillable="true" type="tns:Region"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="Region">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="RegionID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="RegionName" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="StoreCount" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Districts" type="tns:ArrayOfDistrict"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ArrayOfDistrict">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="District" nillable="true" type="tns:District"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="District">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="DistrictID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="DistrictName" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="StoreCount" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Stores" type="tns:ArrayOfStoreInformation"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="GetProductSalesReport">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="startDate" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="endDate" type="s:string"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="channelId" type="s1:guid"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="regionId" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="districtId" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="storeId" type="s:int"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetProductSalesReportResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetProductSalesReportResult" type="tns:ArrayOfProductSalesReportData"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfProductSalesReportData">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="ProductSalesReportData" nillable="true" type="tns:ProductSalesReportData"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ProductSalesReportData">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="1" name="RqInvoiceIdByStore" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorSKU" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ProductSKU" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="InvoicedBy" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="StoreID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="DistrictName" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="DistrictID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="RegionName" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="RegionID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ChannelName" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ChannelID" type="s1:guid"/>
+               <s:element minOccurs="1" maxOccurs="1" name="SoldOn" type="s:dateTime"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ProductItemID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="TrackingNumber" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ListPrice" type="s:double"/>
+               <s:element minOccurs="1" maxOccurs="1" name="Refund" type="s:boolean"/>
+               <s:element minOccurs="0" maxOccurs="1" name="CategoryPath" type="s:string"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="GetInventoryListingReport">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="channelId" type="s1:guid"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="regionId" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="districtId" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="storeId" type="s:int"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetInventoryListingReportResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetInventoryListingReportResult" type="tns:ArrayOfInventoryListingData"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfInventoryListingData">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="InventoryListingData" nillable="true" type="tns:InventoryListingData"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="InventoryListingData">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ProductSKU" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="TrackingNumber" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorName" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorSKU" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ManufacturerSKU" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="CategoryPath" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="RegionName" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="RegionID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="DistrictName" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="DistrictID" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ChannelID" type="s1:guid"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ChannelName" type="s:string"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="GetPurchaseOrderByBusinessID">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="purchaseOrderIdByStore" type="s:string"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetPurchaseOrderByBusinessIDResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetPurchaseOrderByBusinessIDResult" type="tns:PurchaseOrderInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetInventoryReport">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetInventoryReportResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetInventoryReportResult" type="tns:ArrayOfProductInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetGeographicInventoryReport">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="channelId" type="s1:guid"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="regionId" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="districtId" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="storeId" type="s:int"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetGeographicInventoryReportResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetGeographicInventoryReportResult" type="tns:ArrayOfProductAndStoreInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfProductAndStoreInformation">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="ProductAndStoreInformation" nillable="true" type="tns:ProductAndStoreInformation"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ProductAndStoreInformation">
+            <s:complexContent mixed="false">
+               <s:extension base="tns:ProductInformation">
+                  <s:sequence>
+                     <s:element minOccurs="1" maxOccurs="1" name="StoreID" type="s:int"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="StoreName" type="s:string"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="ChannelName" type="s:string"/>
+                     <s:element minOccurs="1" maxOccurs="1" name="ChannelID" type="s1:guid"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="RegionName" type="s:string"/>
+                     <s:element minOccurs="1" maxOccurs="1" name="RegionID" type="s:int"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="DistrictName" type="s:string"/>
+                     <s:element minOccurs="1" maxOccurs="1" name="DistrictID" type="s:int"/>
+                  </s:sequence>
+               </s:extension>
+            </s:complexContent>
+         </s:complexType>
+         <s:element name="GetInventoryReportByVendorSku">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendorSku" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetInventoryReportByVendorSkuResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetInventoryReportByVendorSkuResult" type="tns:ArrayOfProductAndStoreInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetInventoryList">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetInventoryListResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetInventoryListResult" type="tns:ArrayOfProductInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetCompanyList">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetCompanyListResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetCompanyListResult" type="tns:ArrayOfCompanyInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfCompanyInformation">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="CompanyInformation" nillable="true" type="tns:CompanyInformation"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="CompanyInformation">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s1:guid"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="GetDisabledCompanies">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetDisabledCompaniesResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetDisabledCompaniesResult" type="tns:ArrayOfCompanyInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetPendingCompanies">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetPendingCompaniesResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetPendingCompaniesResult" type="tns:ArrayOfCompanyInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetEnabledCompanies">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetEnabledCompaniesResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetEnabledCompaniesResult" type="tns:ArrayOfCompanyInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="EnableCompany">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="isEnabled" type="s:boolean"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="EnableCompanyResponse">
+            <s:complexType/>
+         </s:element>
+         <s:element name="CreatePurchaseOrder">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrder" type="tns:PurchaseOrder"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="PurchaseOrder">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="PurchaseOrderID" type="s1:guid"/>
+               <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrderData" type="tns:PurchaseOrderData"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ProductsOrdered" type="tns:ArrayOfProductInformation"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="CreatePurchaseOrderResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="CreatePurchaseOrderResult" type="tns:PurchaseOrder"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="CreateUncommittedPurchaseOrder">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="purchaseOrder" type="tns:PurchaseOrder"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="CreateUncommittedPurchaseOrderResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="CreateUncommittedPurchaseOrderResult" type="tns:PurchaseOrder"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="UpdatePurchaseOrder">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="purchaseOrder" type="tns:PurchaseOrder"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="UpdatePurchaseOrderResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="UpdatePurchaseOrderResult" type="s:boolean"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="CreatePurchaseOrderShipmentNotice">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="notice" type="tns:ArrayOfPurchaseOrderShipmentNotice"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfPurchaseOrderShipmentNotice">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="PurchaseOrderShipmentNotice" nillable="true" type="tns:PurchaseOrderShipmentNotice"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="PurchaseOrderShipmentNotice">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="1" name="ShipmentNumber" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="PurchaseOrderID" type="s1:guid"/>
+               <s:element minOccurs="1" maxOccurs="1" name="RQPurchaseOrderID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorInvoiceNumber" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ProductItemID" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorSKU" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="SerialNumbers" type="tns:ArrayOfString"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ArrayOfString">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="CreatePurchaseOrderShipmentNoticeResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="CreatePurchaseOrderShipmentNoticeResult" type="tns:ArrayOfPurchaseOrderShipmentNotice"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetPurchaseOrderShipmentNotices">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="purchaseOrderID" type="s1:guid"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetPurchaseOrderShipmentNoticesResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetPurchaseOrderShipmentNoticesResult" type="tns:ArrayOfPurchaseOrderShipmentNotice"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetProductSerialNumbers">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="RQProductID" type="s:int"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetProductSerialNumbersResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetProductSerialNumbersResult" type="tns:ArrayOfProductSerialNumber"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="CreateRMA">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="RMA" type="tns:ReturnMerchandiseAuthorization"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ReturnMerchandiseAuthorization">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="1" name="ProductData" type="tns:ArrayOfRMAProduct"/>
+               <s:element minOccurs="1" maxOccurs="1" name="RMAID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="RMAIDByStore" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="StoreID" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="VendorID" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="CreatedByVMI" type="s:boolean"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorRMANumber" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="WayBillNumber" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ShippingMethod" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ShippingCost" type="s:decimal"/>
+               <s:element minOccurs="1" maxOccurs="1" name="Committed" type="s:unsignedByte"/>
+               <s:element minOccurs="1" maxOccurs="1" name="DateCommitted" type="s:dateTime"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ShippedAway" type="s:unsignedByte"/>
+               <s:element minOccurs="1" maxOccurs="1" name="Completed" type="s:unsignedByte"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ReceivingComments" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="CreditInvoiceNumber" type="s:string"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ArrayOfRMAProduct">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="RMAProduct" nillable="true" type="tns:RMAProduct"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="RMAProduct">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="1" name="RQProductSku" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="RQProductID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorSku" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="SerialNumberRemoved" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorInvoiceNumber" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="TotalQuantity" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="NonSellableQuantity" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="QuantityReceived" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="UnitCost" type="s:decimal"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ActionTaken" type="tns:ActionTaken"/>
+            </s:sequence>
+         </s:complexType>
+         <s:simpleType name="ActionTaken">
+            <s:restriction base="s:string">
+               <s:enumeration value="NotSet"/>
+               <s:enumeration value="Credit"/>
+               <s:enumeration value="Replacement"/>
+               <s:enumeration value="Rejected"/>
+               <s:enumeration value="Repaired"/>
+               <s:enumeration value="Removed"/>
+            </s:restriction>
+         </s:simpleType>
+         <s:element name="CreateRMAResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="CreateRMAResult" type="tns:ReturnMerchandiseAuthorization"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetRMAList">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="isCommitted" type="s:boolean"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="isShipped" type="s:boolean"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetRMAListResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetRMAListResult" type="tns:ArrayOfReturnMerchandiseAuthorization"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfReturnMerchandiseAuthorization">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="ReturnMerchandiseAuthorization" nillable="true" type="tns:ReturnMerchandiseAuthorization"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="CommitRMA">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="rma" type="tns:ReturnMerchandiseAuthorization"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="CommitRMAResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="CommitRMAResult" type="tns:ReturnMerchandiseAuthorization"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="CompleteRMA">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="rma" type="tns:ReturnMerchandiseAuthorization"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="CompleteRMAResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="CompleteRMAResult" type="tns:ReturnMerchandiseAuthorization"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="UpdateRMA">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="rma" type="tns:ReturnMerchandiseAuthorization"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="UpdateRMAResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="UpdateRMAResult" type="tns:ReturnMerchandiseAuthorization"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="UpdateCommittedRMA">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="rma" type="tns:ReturnMerchandiseAuthorization"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="UpdateCommittedRMAResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="UpdateCommittedRMAResult" type="tns:ReturnMerchandiseAuthorization"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetEmployeeList">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="onlyEnabled" type="s:boolean"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetEmployeeListResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetEmployeeListResult" type="tns:ArrayOfEmployeeInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfEmployeeInformation">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="EmployeeInformation" nillable="true" type="tns:EmployeeInformation"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="EmployeeInformation">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="CellPhone" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Role" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="StoreID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="StoreName" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="StoreEmail" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="StoreAddress" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="StoreCity" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="StoreProvinceOrState" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="StoreCountry" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="StorePostalCode" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:boolean"/>
+               <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="GetUncommittedPurchaseOrderList">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetUncommittedPurchaseOrderListResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetUncommittedPurchaseOrderListResult" type="tns:ArrayOfPurchaseOrderInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetCommittedPurchaseOrderList">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetCommittedPurchaseOrderListResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetCommittedPurchaseOrderListResult" type="tns:ArrayOfPurchaseOrderInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetCompletedPurchaseOrderList">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="startDateReceived" type="s:dateTime"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="endDateReceived" type="s:dateTime"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetCompletedPurchaseOrderListResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetCompletedPurchaseOrderListResult" type="tns:ArrayOfPurchaseOrderInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="UpdateMinAndMaxProductQuantities">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="productItemID" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="minQuantity" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="maxQuantity" type="s:int"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="UpdateMinAndMaxProductQuantitiesResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="UpdateMinAndMaxProductQuantitiesResult" type="s:boolean"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetReceivingInfo">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetReceivingInfoResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetReceivingInfoResult" type="tns:ArrayOfReceivingInfo"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfReceivingInfo">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="ReceivingInfo" nillable="true" type="tns:ReceivingInfo"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ReceivingInfo">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="ProductItemID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ShipToStoreID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="ShipToStoreName" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="RQPurchaseOrderNumber" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorName" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorSKU" type="s:string"/>
+               <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="DateReceived" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ProductCost" type="s:double"/>
+               <s:element minOccurs="0" maxOccurs="1" name="RQReceivingNumber" type="s:string"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="CancelUncommittedPurchaseOrder">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="purchaseOrderId" type="s1:guid"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="CancelUncommittedPurchaseOrderResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="CancelUncommittedPurchaseOrderResult" type="s:boolean"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetAdjustmentReport">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="channelId" type="s1:guid"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="regionId" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="districtId" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="storeId" type="s:int"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetAdjustmentReportResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetAdjustmentReportResult" type="tns:ArrayOfAdjustment"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfAdjustment">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="Adjustment" nillable="true" type="tns:Adjustment"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="Adjustment">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="StoreID" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ProductItemID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorSku" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="GetTransferCounts">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="channelId" type="s1:guid"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="regionId" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="districtId" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="storeId" type="s:int"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetTransferCountsResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetTransferCountsResult" type="tns:ArrayOfTransferCount"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:complexType name="ArrayOfTransferCount">
+            <s:sequence>
+               <s:element minOccurs="0" maxOccurs="unbounded" name="TransferCount" nillable="true" type="tns:TransferCount"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="TransferCount">
+            <s:sequence>
+               <s:element minOccurs="1" maxOccurs="1" name="StoreID" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ProductItemID" type="s:int"/>
+               <s:element minOccurs="0" maxOccurs="1" name="VendorSku" type="s:string"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ShippedOut" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ReceivedOut" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ShippedIn" type="s:int"/>
+               <s:element minOccurs="1" maxOccurs="1" name="ReceivedIn" type="s:int"/>
+            </s:sequence>
+         </s:complexType>
+         <s:element name="Ping">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="PingResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="PingResult" type="s:string"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetPurchaseOrderByReferenceNumber">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="vendor" type="tns:VendorIdentity"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="purchaseOrderReferenceNumber" type="s:string"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="GetPurchaseOrderByReferenceNumberResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GetPurchaseOrderByReferenceNumberResult" type="tns:PurchaseOrderInformation"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+      </s:schema>
+      <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+         <s:simpleType name="guid">
+            <s:restriction base="s:string">
+               <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+            </s:restriction>
+         </s:simpleType>
+      </s:schema>
+   </wsdl:types>
+   <wsdl:message name="GetUpdatedInventoryListSoapIn">
+      <wsdl:part name="parameters" element="tns:GetUpdatedInventoryList"/>
+   </wsdl:message>
+   <wsdl:message name="GetUpdatedInventoryListSoapOut">
+      <wsdl:part name="parameters" element="tns:GetUpdatedInventoryListResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetStoreListSoapIn">
+      <wsdl:part name="parameters" element="tns:GetStoreList"/>
+   </wsdl:message>
+   <wsdl:message name="GetStoreListSoapOut">
+      <wsdl:part name="parameters" element="tns:GetStoreListResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetStoreInformationSoapIn">
+      <wsdl:part name="parameters" element="tns:GetStoreInformation"/>
+   </wsdl:message>
+   <wsdl:message name="GetStoreInformationSoapOut">
+      <wsdl:part name="parameters" element="tns:GetStoreInformationResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetPurchaseOrderListSoapIn">
+      <wsdl:part name="parameters" element="tns:GetPurchaseOrderList"/>
+   </wsdl:message>
+   <wsdl:message name="GetPurchaseOrderListSoapOut">
+      <wsdl:part name="parameters" element="tns:GetPurchaseOrderListResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetClientPurchaseOrdersByStatusSoapIn">
+      <wsdl:part name="parameters" element="tns:GetClientPurchaseOrdersByStatus"/>
+   </wsdl:message>
+   <wsdl:message name="GetClientPurchaseOrdersByStatusSoapOut">
+      <wsdl:part name="parameters" element="tns:GetClientPurchaseOrdersByStatusResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetHierarchyInfoSoapIn">
+      <wsdl:part name="parameters" element="tns:GetHierarchyInfo"/>
+   </wsdl:message>
+   <wsdl:message name="GetHierarchyInfoSoapOut">
+      <wsdl:part name="parameters" element="tns:GetHierarchyInfoResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetProductSalesReportSoapIn">
+      <wsdl:part name="parameters" element="tns:GetProductSalesReport"/>
+   </wsdl:message>
+   <wsdl:message name="GetProductSalesReportSoapOut">
+      <wsdl:part name="parameters" element="tns:GetProductSalesReportResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetInventoryListingReportSoapIn">
+      <wsdl:part name="parameters" element="tns:GetInventoryListingReport"/>
+   </wsdl:message>
+   <wsdl:message name="GetInventoryListingReportSoapOut">
+      <wsdl:part name="parameters" element="tns:GetInventoryListingReportResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetPurchaseOrderByBusinessIDSoapIn">
+      <wsdl:part name="parameters" element="tns:GetPurchaseOrderByBusinessID"/>
+   </wsdl:message>
+   <wsdl:message name="GetPurchaseOrderByBusinessIDSoapOut">
+      <wsdl:part name="parameters" element="tns:GetPurchaseOrderByBusinessIDResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetInventoryReportSoapIn">
+      <wsdl:part name="parameters" element="tns:GetInventoryReport"/>
+   </wsdl:message>
+   <wsdl:message name="GetInventoryReportSoapOut">
+      <wsdl:part name="parameters" element="tns:GetInventoryReportResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetGeographicInventoryReportSoapIn">
+      <wsdl:part name="parameters" element="tns:GetGeographicInventoryReport"/>
+   </wsdl:message>
+   <wsdl:message name="GetGeographicInventoryReportSoapOut">
+      <wsdl:part name="parameters" element="tns:GetGeographicInventoryReportResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetInventoryReportByVendorSkuSoapIn">
+      <wsdl:part name="parameters" element="tns:GetInventoryReportByVendorSku"/>
+   </wsdl:message>
+   <wsdl:message name="GetInventoryReportByVendorSkuSoapOut">
+      <wsdl:part name="parameters" element="tns:GetInventoryReportByVendorSkuResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetInventoryListSoapIn">
+      <wsdl:part name="parameters" element="tns:GetInventoryList"/>
+   </wsdl:message>
+   <wsdl:message name="GetInventoryListSoapOut">
+      <wsdl:part name="parameters" element="tns:GetInventoryListResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetCompanyListSoapIn">
+      <wsdl:part name="parameters" element="tns:GetCompanyList"/>
+   </wsdl:message>
+   <wsdl:message name="GetCompanyListSoapOut">
+      <wsdl:part name="parameters" element="tns:GetCompanyListResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetDisabledCompaniesSoapIn">
+      <wsdl:part name="parameters" element="tns:GetDisabledCompanies"/>
+   </wsdl:message>
+   <wsdl:message name="GetDisabledCompaniesSoapOut">
+      <wsdl:part name="parameters" element="tns:GetDisabledCompaniesResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetPendingCompaniesSoapIn">
+      <wsdl:part name="parameters" element="tns:GetPendingCompanies"/>
+   </wsdl:message>
+   <wsdl:message name="GetPendingCompaniesSoapOut">
+      <wsdl:part name="parameters" element="tns:GetPendingCompaniesResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetEnabledCompaniesSoapIn">
+      <wsdl:part name="parameters" element="tns:GetEnabledCompanies"/>
+   </wsdl:message>
+   <wsdl:message name="GetEnabledCompaniesSoapOut">
+      <wsdl:part name="parameters" element="tns:GetEnabledCompaniesResponse"/>
+   </wsdl:message>
+   <wsdl:message name="EnableCompanySoapIn">
+      <wsdl:part name="parameters" element="tns:EnableCompany"/>
+   </wsdl:message>
+   <wsdl:message name="EnableCompanySoapOut">
+      <wsdl:part name="parameters" element="tns:EnableCompanyResponse"/>
+   </wsdl:message>
+   <wsdl:message name="CreatePurchaseOrderSoapIn">
+      <wsdl:part name="parameters" element="tns:CreatePurchaseOrder"/>
+   </wsdl:message>
+   <wsdl:message name="CreatePurchaseOrderSoapOut">
+      <wsdl:part name="parameters" element="tns:CreatePurchaseOrderResponse"/>
+   </wsdl:message>
+   <wsdl:message name="CreateUncommittedPurchaseOrderSoapIn">
+      <wsdl:part name="parameters" element="tns:CreateUncommittedPurchaseOrder"/>
+   </wsdl:message>
+   <wsdl:message name="CreateUncommittedPurchaseOrderSoapOut">
+      <wsdl:part name="parameters" element="tns:CreateUncommittedPurchaseOrderResponse"/>
+   </wsdl:message>
+   <wsdl:message name="UpdatePurchaseOrderSoapIn">
+      <wsdl:part name="parameters" element="tns:UpdatePurchaseOrder"/>
+   </wsdl:message>
+   <wsdl:message name="UpdatePurchaseOrderSoapOut">
+      <wsdl:part name="parameters" element="tns:UpdatePurchaseOrderResponse"/>
+   </wsdl:message>
+   <wsdl:message name="CreatePurchaseOrderShipmentNoticeSoapIn">
+      <wsdl:part name="parameters" element="tns:CreatePurchaseOrderShipmentNotice"/>
+   </wsdl:message>
+   <wsdl:message name="CreatePurchaseOrderShipmentNoticeSoapOut">
+      <wsdl:part name="parameters" element="tns:CreatePurchaseOrderShipmentNoticeResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetPurchaseOrderShipmentNoticesSoapIn">
+      <wsdl:part name="parameters" element="tns:GetPurchaseOrderShipmentNotices"/>
+   </wsdl:message>
+   <wsdl:message name="GetPurchaseOrderShipmentNoticesSoapOut">
+      <wsdl:part name="parameters" element="tns:GetPurchaseOrderShipmentNoticesResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetProductSerialNumbersSoapIn">
+      <wsdl:part name="parameters" element="tns:GetProductSerialNumbers"/>
+   </wsdl:message>
+   <wsdl:message name="GetProductSerialNumbersSoapOut">
+      <wsdl:part name="parameters" element="tns:GetProductSerialNumbersResponse"/>
+   </wsdl:message>
+   <wsdl:message name="CreateRMASoapIn">
+      <wsdl:part name="parameters" element="tns:CreateRMA"/>
+   </wsdl:message>
+   <wsdl:message name="CreateRMASoapOut">
+      <wsdl:part name="parameters" element="tns:CreateRMAResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetRMAListSoapIn">
+      <wsdl:part name="parameters" element="tns:GetRMAList"/>
+   </wsdl:message>
+   <wsdl:message name="GetRMAListSoapOut">
+      <wsdl:part name="parameters" element="tns:GetRMAListResponse"/>
+   </wsdl:message>
+   <wsdl:message name="CommitRMASoapIn">
+      <wsdl:part name="parameters" element="tns:CommitRMA"/>
+   </wsdl:message>
+   <wsdl:message name="CommitRMASoapOut">
+      <wsdl:part name="parameters" element="tns:CommitRMAResponse"/>
+   </wsdl:message>
+   <wsdl:message name="CompleteRMASoapIn">
+      <wsdl:part name="parameters" element="tns:CompleteRMA"/>
+   </wsdl:message>
+   <wsdl:message name="CompleteRMASoapOut">
+      <wsdl:part name="parameters" element="tns:CompleteRMAResponse"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateRMASoapIn">
+      <wsdl:part name="parameters" element="tns:UpdateRMA"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateRMASoapOut">
+      <wsdl:part name="parameters" element="tns:UpdateRMAResponse"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateCommittedRMASoapIn">
+      <wsdl:part name="parameters" element="tns:UpdateCommittedRMA"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateCommittedRMASoapOut">
+      <wsdl:part name="parameters" element="tns:UpdateCommittedRMAResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetEmployeeListSoapIn">
+      <wsdl:part name="parameters" element="tns:GetEmployeeList"/>
+   </wsdl:message>
+   <wsdl:message name="GetEmployeeListSoapOut">
+      <wsdl:part name="parameters" element="tns:GetEmployeeListResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetUncommittedPurchaseOrderListSoapIn">
+      <wsdl:part name="parameters" element="tns:GetUncommittedPurchaseOrderList"/>
+   </wsdl:message>
+   <wsdl:message name="GetUncommittedPurchaseOrderListSoapOut">
+      <wsdl:part name="parameters" element="tns:GetUncommittedPurchaseOrderListResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetCommittedPurchaseOrderListSoapIn">
+      <wsdl:part name="parameters" element="tns:GetCommittedPurchaseOrderList"/>
+   </wsdl:message>
+   <wsdl:message name="GetCommittedPurchaseOrderListSoapOut">
+      <wsdl:part name="parameters" element="tns:GetCommittedPurchaseOrderListResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetCompletedPurchaseOrderListSoapIn">
+      <wsdl:part name="parameters" element="tns:GetCompletedPurchaseOrderList"/>
+   </wsdl:message>
+   <wsdl:message name="GetCompletedPurchaseOrderListSoapOut">
+      <wsdl:part name="parameters" element="tns:GetCompletedPurchaseOrderListResponse"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateMinAndMaxProductQuantitiesSoapIn">
+      <wsdl:part name="parameters" element="tns:UpdateMinAndMaxProductQuantities"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateMinAndMaxProductQuantitiesSoapOut">
+      <wsdl:part name="parameters" element="tns:UpdateMinAndMaxProductQuantitiesResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetReceivingInfoSoapIn">
+      <wsdl:part name="parameters" element="tns:GetReceivingInfo"/>
+   </wsdl:message>
+   <wsdl:message name="GetReceivingInfoSoapOut">
+      <wsdl:part name="parameters" element="tns:GetReceivingInfoResponse"/>
+   </wsdl:message>
+   <wsdl:message name="CancelUncommittedPurchaseOrderSoapIn">
+      <wsdl:part name="parameters" element="tns:CancelUncommittedPurchaseOrder"/>
+   </wsdl:message>
+   <wsdl:message name="CancelUncommittedPurchaseOrderSoapOut">
+      <wsdl:part name="parameters" element="tns:CancelUncommittedPurchaseOrderResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetAdjustmentReportSoapIn">
+      <wsdl:part name="parameters" element="tns:GetAdjustmentReport"/>
+   </wsdl:message>
+   <wsdl:message name="GetAdjustmentReportSoapOut">
+      <wsdl:part name="parameters" element="tns:GetAdjustmentReportResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetTransferCountsSoapIn">
+      <wsdl:part name="parameters" element="tns:GetTransferCounts"/>
+   </wsdl:message>
+   <wsdl:message name="GetTransferCountsSoapOut">
+      <wsdl:part name="parameters" element="tns:GetTransferCountsResponse"/>
+   </wsdl:message>
+   <wsdl:message name="PingSoapIn">
+      <wsdl:part name="parameters" element="tns:Ping"/>
+   </wsdl:message>
+   <wsdl:message name="PingSoapOut">
+      <wsdl:part name="parameters" element="tns:PingResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetPurchaseOrderByReferenceNumberSoapIn">
+      <wsdl:part name="parameters" element="tns:GetPurchaseOrderByReferenceNumber"/>
+   </wsdl:message>
+   <wsdl:message name="GetPurchaseOrderByReferenceNumberSoapOut">
+      <wsdl:part name="parameters" element="tns:GetPurchaseOrderByReferenceNumberResponse"/>
+   </wsdl:message>
+   <wsdl:portType name="VMIServiceSoap">
+      <wsdl:operation name="GetUpdatedInventoryList">
+         <wsdl:input message="tns:GetUpdatedInventoryListSoapIn"/>
+         <wsdl:output message="tns:GetUpdatedInventoryListSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetStoreList">
+         <wsdl:input message="tns:GetStoreListSoapIn"/>
+         <wsdl:output message="tns:GetStoreListSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetStoreInformation">
+         <wsdl:input message="tns:GetStoreInformationSoapIn"/>
+         <wsdl:output message="tns:GetStoreInformationSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderList">
+         <wsdl:input message="tns:GetPurchaseOrderListSoapIn"/>
+         <wsdl:output message="tns:GetPurchaseOrderListSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetClientPurchaseOrdersByStatus">
+         <wsdl:input message="tns:GetClientPurchaseOrdersByStatusSoapIn"/>
+         <wsdl:output message="tns:GetClientPurchaseOrdersByStatusSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetHierarchyInfo">
+         <wsdl:input message="tns:GetHierarchyInfoSoapIn"/>
+         <wsdl:output message="tns:GetHierarchyInfoSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetProductSalesReport">
+         <wsdl:input message="tns:GetProductSalesReportSoapIn"/>
+         <wsdl:output message="tns:GetProductSalesReportSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryListingReport">
+         <wsdl:input message="tns:GetInventoryListingReportSoapIn"/>
+         <wsdl:output message="tns:GetInventoryListingReportSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderByBusinessID">
+         <wsdl:input message="tns:GetPurchaseOrderByBusinessIDSoapIn"/>
+         <wsdl:output message="tns:GetPurchaseOrderByBusinessIDSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryReport">
+         <wsdl:input message="tns:GetInventoryReportSoapIn"/>
+         <wsdl:output message="tns:GetInventoryReportSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetGeographicInventoryReport">
+         <wsdl:input message="tns:GetGeographicInventoryReportSoapIn"/>
+         <wsdl:output message="tns:GetGeographicInventoryReportSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryReportByVendorSku">
+         <wsdl:input message="tns:GetInventoryReportByVendorSkuSoapIn"/>
+         <wsdl:output message="tns:GetInventoryReportByVendorSkuSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryList">
+         <wsdl:input message="tns:GetInventoryListSoapIn"/>
+         <wsdl:output message="tns:GetInventoryListSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetCompanyList">
+         <wsdl:input message="tns:GetCompanyListSoapIn"/>
+         <wsdl:output message="tns:GetCompanyListSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetDisabledCompanies">
+         <wsdl:input message="tns:GetDisabledCompaniesSoapIn"/>
+         <wsdl:output message="tns:GetDisabledCompaniesSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetPendingCompanies">
+         <wsdl:input message="tns:GetPendingCompaniesSoapIn"/>
+         <wsdl:output message="tns:GetPendingCompaniesSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetEnabledCompanies">
+         <wsdl:input message="tns:GetEnabledCompaniesSoapIn"/>
+         <wsdl:output message="tns:GetEnabledCompaniesSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="EnableCompany">
+         <wsdl:input message="tns:EnableCompanySoapIn"/>
+         <wsdl:output message="tns:EnableCompanySoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="CreatePurchaseOrder">
+         <wsdl:input message="tns:CreatePurchaseOrderSoapIn"/>
+         <wsdl:output message="tns:CreatePurchaseOrderSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="CreateUncommittedPurchaseOrder">
+         <wsdl:input message="tns:CreateUncommittedPurchaseOrderSoapIn"/>
+         <wsdl:output message="tns:CreateUncommittedPurchaseOrderSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="UpdatePurchaseOrder">
+         <wsdl:input message="tns:UpdatePurchaseOrderSoapIn"/>
+         <wsdl:output message="tns:UpdatePurchaseOrderSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="CreatePurchaseOrderShipmentNotice">
+         <wsdl:input message="tns:CreatePurchaseOrderShipmentNoticeSoapIn"/>
+         <wsdl:output message="tns:CreatePurchaseOrderShipmentNoticeSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderShipmentNotices">
+         <wsdl:input message="tns:GetPurchaseOrderShipmentNoticesSoapIn"/>
+         <wsdl:output message="tns:GetPurchaseOrderShipmentNoticesSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetProductSerialNumbers">
+         <wsdl:input message="tns:GetProductSerialNumbersSoapIn"/>
+         <wsdl:output message="tns:GetProductSerialNumbersSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="CreateRMA">
+         <wsdl:input message="tns:CreateRMASoapIn"/>
+         <wsdl:output message="tns:CreateRMASoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetRMAList">
+         <wsdl:input message="tns:GetRMAListSoapIn"/>
+         <wsdl:output message="tns:GetRMAListSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="CommitRMA">
+         <wsdl:input message="tns:CommitRMASoapIn"/>
+         <wsdl:output message="tns:CommitRMASoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="CompleteRMA">
+         <wsdl:input message="tns:CompleteRMASoapIn"/>
+         <wsdl:output message="tns:CompleteRMASoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateRMA">
+         <wsdl:input message="tns:UpdateRMASoapIn"/>
+         <wsdl:output message="tns:UpdateRMASoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateCommittedRMA">
+         <wsdl:input message="tns:UpdateCommittedRMASoapIn"/>
+         <wsdl:output message="tns:UpdateCommittedRMASoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetEmployeeList">
+         <wsdl:input message="tns:GetEmployeeListSoapIn"/>
+         <wsdl:output message="tns:GetEmployeeListSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetUncommittedPurchaseOrderList">
+         <wsdl:input message="tns:GetUncommittedPurchaseOrderListSoapIn"/>
+         <wsdl:output message="tns:GetUncommittedPurchaseOrderListSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetCommittedPurchaseOrderList">
+         <wsdl:input message="tns:GetCommittedPurchaseOrderListSoapIn"/>
+         <wsdl:output message="tns:GetCommittedPurchaseOrderListSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetCompletedPurchaseOrderList">
+         <wsdl:input message="tns:GetCompletedPurchaseOrderListSoapIn"/>
+         <wsdl:output message="tns:GetCompletedPurchaseOrderListSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateMinAndMaxProductQuantities">
+         <wsdl:input message="tns:UpdateMinAndMaxProductQuantitiesSoapIn"/>
+         <wsdl:output message="tns:UpdateMinAndMaxProductQuantitiesSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetReceivingInfo">
+         <wsdl:input message="tns:GetReceivingInfoSoapIn"/>
+         <wsdl:output message="tns:GetReceivingInfoSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="CancelUncommittedPurchaseOrder">
+         <wsdl:input message="tns:CancelUncommittedPurchaseOrderSoapIn"/>
+         <wsdl:output message="tns:CancelUncommittedPurchaseOrderSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetAdjustmentReport">
+         <wsdl:input message="tns:GetAdjustmentReportSoapIn"/>
+         <wsdl:output message="tns:GetAdjustmentReportSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetTransferCounts">
+         <wsdl:input message="tns:GetTransferCountsSoapIn"/>
+         <wsdl:output message="tns:GetTransferCountsSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="Ping">
+         <wsdl:input message="tns:PingSoapIn"/>
+         <wsdl:output message="tns:PingSoapOut"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderByReferenceNumber">
+         <wsdl:input message="tns:GetPurchaseOrderByReferenceNumberSoapIn"/>
+         <wsdl:output message="tns:GetPurchaseOrderByReferenceNumberSoapOut"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="VMIServiceSoap" type="tns:VMIServiceSoap">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="GetUpdatedInventoryList">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetUpdatedInventoryList" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetStoreList">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetStoreList" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetStoreInformation">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetStoreInformation" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderList">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetPurchaseOrderList" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetClientPurchaseOrdersByStatus">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetClientPurchaseOrdersByStatus" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetHierarchyInfo">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetHierarchyInfo" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetProductSalesReport">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetProductSalesReport" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryListingReport">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetInventoryListingReport" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderByBusinessID">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetPurchaseOrderByBusinessID" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryReport">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetInventoryReport" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetGeographicInventoryReport">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetGeographicInventoryReport" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryReportByVendorSku">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetInventoryReportByVendorSku" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryList">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetInventoryList" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetCompanyList">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetCompanyList" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetDisabledCompanies">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetDisabledCompanies" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetPendingCompanies">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetPendingCompanies" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetEnabledCompanies">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetEnabledCompanies" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="EnableCompany">
+         <soap:operation soapAction="http://www.iqmetrix.com/EnableCompany" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CreatePurchaseOrder">
+         <soap:operation soapAction="http://www.iqmetrix.com/CreatePurchaseOrder" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CreateUncommittedPurchaseOrder">
+         <soap:operation soapAction="http://www.iqmetrix.com/CreateUncommittedPurchaseOrder" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="UpdatePurchaseOrder">
+         <soap:operation soapAction="http://www.iqmetrix.com/UpdatePurchaseOrder" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CreatePurchaseOrderShipmentNotice">
+         <soap:operation soapAction="http://www.iqmetrix.com/CreatePurchaseOrderShipmentNotice" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderShipmentNotices">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetPurchaseOrderShipmentNotices" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetProductSerialNumbers">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetProductSerialNumbers" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CreateRMA">
+         <soap:operation soapAction="http://www.iqmetrix.com/CreateRMA" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetRMAList">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetRMAList" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CommitRMA">
+         <soap:operation soapAction="http://www.iqmetrix.com/CommitRMA" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CompleteRMA">
+         <soap:operation soapAction="http://www.iqmetrix.com/CompleteRMA" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateRMA">
+         <soap:operation soapAction="http://www.iqmetrix.com/UpdateRMA" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateCommittedRMA">
+         <soap:operation soapAction="http://www.iqmetrix.com/UpdateCommittedRMA" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetEmployeeList">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetEmployeeList" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetUncommittedPurchaseOrderList">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetUncommittedPurchaseOrderList" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetCommittedPurchaseOrderList">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetCommittedPurchaseOrderList" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetCompletedPurchaseOrderList">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetCompletedPurchaseOrderList" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateMinAndMaxProductQuantities">
+         <soap:operation soapAction="http://www.iqmetrix.com/UpdateMinAndMaxProductQuantities" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetReceivingInfo">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetReceivingInfo" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CancelUncommittedPurchaseOrder">
+         <soap:operation soapAction="http://www.iqmetrix.com/CancelUncommittedPurchaseOrder" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetAdjustmentReport">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetAdjustmentReport" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetTransferCounts">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetTransferCounts" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="Ping">
+         <soap:operation soapAction="http://www.iqmetrix.com/Ping" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderByReferenceNumber">
+         <soap:operation soapAction="http://www.iqmetrix.com/GetPurchaseOrderByReferenceNumber" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="VMIServiceSoap12" type="tns:VMIServiceSoap">
+      <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="GetUpdatedInventoryList">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetUpdatedInventoryList" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetStoreList">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetStoreList" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetStoreInformation">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetStoreInformation" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderList">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetPurchaseOrderList" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetClientPurchaseOrdersByStatus">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetClientPurchaseOrdersByStatus" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetHierarchyInfo">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetHierarchyInfo" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetProductSalesReport">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetProductSalesReport" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryListingReport">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetInventoryListingReport" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderByBusinessID">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetPurchaseOrderByBusinessID" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryReport">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetInventoryReport" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetGeographicInventoryReport">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetGeographicInventoryReport" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryReportByVendorSku">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetInventoryReportByVendorSku" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetInventoryList">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetInventoryList" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetCompanyList">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetCompanyList" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetDisabledCompanies">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetDisabledCompanies" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetPendingCompanies">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetPendingCompanies" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetEnabledCompanies">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetEnabledCompanies" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="EnableCompany">
+         <soap12:operation soapAction="http://www.iqmetrix.com/EnableCompany" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CreatePurchaseOrder">
+         <soap12:operation soapAction="http://www.iqmetrix.com/CreatePurchaseOrder" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CreateUncommittedPurchaseOrder">
+         <soap12:operation soapAction="http://www.iqmetrix.com/CreateUncommittedPurchaseOrder" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="UpdatePurchaseOrder">
+         <soap12:operation soapAction="http://www.iqmetrix.com/UpdatePurchaseOrder" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CreatePurchaseOrderShipmentNotice">
+         <soap12:operation soapAction="http://www.iqmetrix.com/CreatePurchaseOrderShipmentNotice" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderShipmentNotices">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetPurchaseOrderShipmentNotices" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetProductSerialNumbers">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetProductSerialNumbers" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CreateRMA">
+         <soap12:operation soapAction="http://www.iqmetrix.com/CreateRMA" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetRMAList">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetRMAList" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CommitRMA">
+         <soap12:operation soapAction="http://www.iqmetrix.com/CommitRMA" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CompleteRMA">
+         <soap12:operation soapAction="http://www.iqmetrix.com/CompleteRMA" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateRMA">
+         <soap12:operation soapAction="http://www.iqmetrix.com/UpdateRMA" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateCommittedRMA">
+         <soap12:operation soapAction="http://www.iqmetrix.com/UpdateCommittedRMA" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetEmployeeList">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetEmployeeList" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetUncommittedPurchaseOrderList">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetUncommittedPurchaseOrderList" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetCommittedPurchaseOrderList">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetCommittedPurchaseOrderList" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetCompletedPurchaseOrderList">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetCompletedPurchaseOrderList" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateMinAndMaxProductQuantities">
+         <soap12:operation soapAction="http://www.iqmetrix.com/UpdateMinAndMaxProductQuantities" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetReceivingInfo">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetReceivingInfo" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CancelUncommittedPurchaseOrder">
+         <soap12:operation soapAction="http://www.iqmetrix.com/CancelUncommittedPurchaseOrder" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetAdjustmentReport">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetAdjustmentReport" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetTransferCounts">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetTransferCounts" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="Ping">
+         <soap12:operation soapAction="http://www.iqmetrix.com/Ping" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetPurchaseOrderByReferenceNumber">
+         <soap12:operation soapAction="http://www.iqmetrix.com/GetPurchaseOrderByReferenceNumber" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="VMIService">
+      <wsdl:port name="VMIServiceSoap" binding="tns:VMIServiceSoap">
+         <soap:address location="https://vmi7.iqmetrix.net/VMIService.asmx"/>
+      </wsdl:port>
+      <wsdl:port name="VMIServiceSoap12" binding="tns:VMIServiceSoap12">
+         <soap12:address location="https://vmi7.iqmetrix.net/VMIService.asmx"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>
